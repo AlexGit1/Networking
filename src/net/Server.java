@@ -20,10 +20,11 @@ public class Server {
                 System.out.print(server.getLocalPort());
                 System.out.print("\n");
                 DataInputStream inp = new DataInputStream(client.getInputStream());
-                if (inp.readUTF() == "exit"){
+                if (inp.readUTF().equals("exit")){
                     running = false;
                 }
                 else {
+                    System.out.print(inp.readUTF());
                     System.out.print("\nfail\n");
                 }
             }
