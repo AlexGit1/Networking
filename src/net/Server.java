@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Objects;
 
 public class Server {
 
@@ -26,11 +27,13 @@ public class Server {
                 back.flush();
                 ///////////////////////////////////////////////////////////////////////
                 DataInputStream inp = new DataInputStream(client.getInputStream());
-                if (inp.readUTF().equals("exit")){
+                String data = inp.readUTF();
+
+                if (Objects.equals(data ,"exit")){
                     running = false;
                 }
                 else {
-                    System.out.print(inp.readUTF());
+                    System.out.print(data);
                     System.out.print("\nfail\n");
                 }
             }
